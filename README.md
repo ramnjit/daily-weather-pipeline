@@ -1,52 +1,57 @@
-# Daily Weather ETL Pipeline
+# 🐍 Interactive Python ETL Web App (Flask & AWS)
 
-## 📝 Synopsis
+This is a full-stack web application that demonstrates a complete data pipeline. The project uses a **Python/Flask** backend (hosted on **AWS Elastic Beanstalk**) to run an ETL script that fetches live data from a public weather API, transforms it, and loads it to an **AWS S3** bucket.
 
-This project is a simple, daily ETL (Extract, Transform, Load) data pipeline written in Python. It's designed to showcase foundational data engineering concepts and hands-on experience with AWS.
+The frontend is a simple, interactive HTML/CSS/JavaScript page (served by Flask) that allows a user to trigger the pipeline and see the processed JSON data in real-time.
 
-The pipeline performs the following steps:
-1.  **Extract:** Fetches the previous day's weather data for a configured location from the Open-Meteo API.
-2.  **Transform:** Calculates simple summary statistics (e.g., average temperature).
-3.  **Load:** Saves both the raw and the processed summary data as JSON files to an AWS S3 bucket.
+## 🚀 Live Interactive Demo
+
+This repository contains the **backend API** for the ETL pipeline.
+
+A live, interactive **frontend demo** of this project (which calls this API) is hosted on my main portfolio website. You can go there right now to select a city and run the pipeline in your browser:
+
+**[https://romanboparai.com/python-etl](https://romanboparai.com/python-etl)**
+
+## Features 🌟
+
+* **Interactive Frontend:** A clean UI built with HTML/CSS that allows a user to select a city.
+* **Dynamic Data Fetching:** JavaScript `fetch()` calls the live backend API to run the pipeline on demand.
+* **Dynamic Results:** The JSON data returned from the API is dynamically rendered onto the page, including a C°/F° toggle.
+* **ETL Backend:** The core logic runs a full Extract, Transform, and Load process.
+* **Cloud Deployment:** The entire Flask application is deployed and running on AWS Elastic Beanstalk.
 
 ## 🛠️ Tech Stack
 
-* **Language:** Python
-* **Libraries:** Requests (for API calls), Boto3 (AWS SDK)
-* **Cloud Platform:** AWS S3
+* **Backend:** **Python**, **Flask**, **Gunicorn**, **Boto3** (for AWS), **Requests**
+* **Frontend:** **HTML5**, **CSS3**, **JavaScript (ES6+)**
+* **Cloud:** **AWS Elastic Beanstalk** (for hosting the app), **AWS S3** (for data storage)
 
-## ⚙️ Setup & Installation
+## ⚙️ How to Run Locally
 
 To run this project, you will need an AWS account and Python installed.
 
-1.  **Clone the Repository:**
-    ```bash
-    git clone [your-repo-url]
-    cd daily-weather-pipeline
-    ```
+1.  **Clone the Repository** and `cd` into the folder.
+
 2.  **Set up AWS:**
     * Create a private **S3 bucket**.
-    * Create an **IAM User** with programmatic access and a permission policy that allows `s3:PutObject` actions on your bucket.
-    * Configure your local machine with the user's credentials by running `aws configure`.
+    * Create an **IAM User** with programmatic access and a policy that allows `s3:PutObject` on your bucket.
+    * Run `aws configure` in your terminal to set up your local credentials.
 
 3.  **Configure the Project:**
-    * Create a copy of the `config.ini.template` file and name it `config.ini`.
-    * Edit `config.ini` and enter your S3 bucket name.
+    * Copy your S3 bucket name into the `config.ini` file.
 
-4.  **Install Dependencies:**
+4.  **Install Dependencies & Run:**
     * Create and activate a Python virtual environment:
         ```bash
         python -m venv venv
-        source venv/bin/activate  # On macOS/Linux
-        .\venv\Scripts\activate  # On Windows
+        .\venv\Scripts\activate
         ```
     * Install the required libraries:
         ```bash
         pip install -r requirements.txt
         ```
-
-## ▶️ Usage
-
-Run the pipeline from your terminal:
-```bash
-python pipeline.py
+    * Run the Flask server in debug mode:
+        ```bash
+        flask --app application --debug run
+        ```
+5.  **View the App:** Open **`http://localhost:5000`** in your browser.
