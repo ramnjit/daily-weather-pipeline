@@ -4,14 +4,6 @@ This is a full-stack web application that demonstrates a complete data pipeline.
 
 The frontend is a simple, interactive HTML/CSS/JavaScript page (served by Flask) that allows a user to trigger the pipeline and see the processed JSON data in real-time.
 
-## 🚀 Live Interactive Demo
-
-This repository contains the **backend API** for the ETL pipeline.
-
-A live, interactive **frontend demo** of this project (which calls this API) is hosted on my main portfolio website. You can go there right now to select a city and run the pipeline in your browser:
-
-**[https://romanboparai.com/python-etl](https://romanboparai.com/python-etl)**
-
 ## Features 🌟
 
 * **Interactive Frontend:** A clean UI built with HTML/CSS that allows a user to select a city.
